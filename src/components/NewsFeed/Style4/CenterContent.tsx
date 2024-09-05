@@ -7,7 +7,7 @@ import { ReadDto } from "@/redux-toolkit/models/searchModel";
 import { PostService } from "@/redux-toolkit/services/PostService";
 import { useSession } from "next-auth/react";
 import useDebounce from "@/components/hooks/useDebounce"; // Import custom debounce hook
-
+ 
 const CenterContent: React.FC = () => {
   const { data: session } = useSession();
   const accessToken = "Bearer " + session?.user?.access_token;
@@ -18,16 +18,17 @@ const CenterContent: React.FC = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  // const [array, setArray] = useState<Post[]>([]);
 
   const [triggerGetAll, { data: fetchedData, isLoading }] = useLazyGetAllQuery();
-
+  
   const fetchPosts = async (pageNumber: number) => {
     const postquery = new ReadDto<Post>();
     postquery.sortColumn = "dateTime";
     postquery.sortColumnDirection = "desc";
     postquery.page = pageNumber;
     postquery.pageSize = 10;
-
+ 
     setLoading(true);
     try {
       await triggerGetAll({ ...postquery });
@@ -36,27 +37,34 @@ const CenterContent: React.FC = () => {
     }
   };
 
+
+  // var posta = new Post();
+
+  // array.push(posta);
+ 
+  // posta.content='a7a'
+
+
   useEffect(() => {
     if (fetchedData) {
-      console.log("Fetched data:", fetchedData);
       const newPosts = fetchedData?.data?.listData || [];
       if (newPosts.length === 0) {
         setHasMore(false);
       } else {
+        // setPosts((prevPosts) => [...array,...prevPosts, ...newPosts]);
         setPosts((prevPosts) => [...prevPosts, ...newPosts]);
       }
+    
     }
   }, [fetchedData]);
 
   useEffect(() => {
     if (hasMore) {
-      console.log(`Fetching posts for page ${page}`);
       fetchPosts(page);
     }
   }, [page]);
 
   const handleScroll = useDebounce(() => {
-    console.log("Scroll detected");
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 500 && !loading && hasMore) {
       console.log("Loading more posts");
       setPage((prevPage) => prevPage + 1);

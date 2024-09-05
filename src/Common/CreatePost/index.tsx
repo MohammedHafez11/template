@@ -15,7 +15,7 @@ import CreatePostHeader from "./CreatePostHeader";
 
 const CreatePost = () => {
   const { data: session } = useSession();
-const accessToken ="Bearer " + session?.user?.access_token;
+  const accessToken ="Bearer " + session?.user?.access_token;
   const colorList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   const [writePost, setWritePost] = useState(false);
   const [showPostButton, setShowPostButton] = useState(false);
@@ -31,17 +31,15 @@ const accessToken ="Bearer " + session?.user?.access_token;
   const [isContentEmpty, setIsContentEmpty] = useState(false);
   const [isBackgroundContentEmpty, setIsBackgroundContentEmpty] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  
   // const sortColumn = "dateTime"; 
   // const sortColumnDirection = "desc"; 
-  
 
   // Fetch posts with sorting
   // const { data: posts, refetch: refetchPosts } = useGetAllQuery({
   //   sortColumn,
   //   sortColumnDirection
   // });
-
-
 
   const handleAddPost = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -201,7 +199,7 @@ const accessToken ="Bearer " + session?.user?.access_token;
             </ul>
             <div style={{ marginTop: "10px" }}>
               {filePreviews.length > 0 && (
-                <div style={{ display: "flex", justifyContent: "space-around", flexWrap: "wrap", padding: "10px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", flexWrap: "wrap", padding: "10px" }}>
                   {filePreviews.map((file, index) => (
                     <div key={index} style={{ position: "relative" }}>
                       {file.type === "image" && (

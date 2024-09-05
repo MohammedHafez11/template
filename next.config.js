@@ -3,7 +3,7 @@ const nextConfig = {
     return [
       {
         source: "/",
-        destination: "/newsfeed/style1",
+        destination: "/home",
         permanent: true,
       },
     ];

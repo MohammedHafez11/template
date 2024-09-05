@@ -35,6 +35,7 @@
     "react-countdown": "^2.3.5",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
+    "react-hook-form": "^7.53.0",
     "react-icons": "^4.11.0",
     "react-insta-stories": "^2.6.2",
     "react-player": "^2.16.0",

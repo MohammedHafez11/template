@@ -27,7 +27,6 @@ const DetailBox = ({item}:props)  => {
             <li  className="popover-cls bg-size blur-up lazyloaded">
               <CustomImage src="" className="img-fluid blur-up lazyload bg-img" alt="image"/>
             </li>
-        
         </ul>
         <h6 style={{fontSize: "14px"}}>+12 {PeopleReactThisPost}</h6>
       </div>

@@ -28,17 +28,6 @@ const CommentSection = ({ showComment, item }: Props) => {
   return (
     <div className="comment-section">
       <div className={`comments ${showComment ? "d-block" : ""}`}>
-        {/* <div className="main-comment">
-          <MainComment message="Oooo Very Cute and Sweet Dog, happy birthday Cuty.... 🙂" id="firstComment" />
-          <div className="sub-comment">
-            <SubComment image={3} id="secondComment"  />
-            <SubComment image={4} id="thirdComment" />
-            <a href={Href} className="loader">
-              <DynamicFeatherIcon iconName="RotateCw" className="iw-15 ih-15" />
-              {LoadMoreReplies}
-            </a>
-          </div>
-        </div> */}
         <div className="main-comment">
           <MainComment message="It’s party time, Sufiya..... and happy birthday cuty 🎉🎊" id="fourthComment" />
         </div>
